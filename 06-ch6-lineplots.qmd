@@ -14,7 +14,7 @@ Make sure you download the data file and paste it into your project folder befor
 
 The code below will create a new object `vaccinations` and read in the datafile `vaccinations_by_age_group.csv`:
 
-```{r read data}
+```{r read data, message = FALSE, warning = FALSE}
 vaccinations <- read_csv("vaccinations_by_age_group.csv")
 ```
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.353">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="description" content="Book Description">
+<meta name="description" content="Materials and content to introduce graduate students to using ggplot2 for data visualisation.">
 <title>SGSSS Data Visualisation Workshop - 5&nbsp; Violin-boxplots</title>
 <style>
 code{white-space: pre-wrap;}
@@ -258,43 +258,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-</header><div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.3     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.0
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
-Rows: 100 Columns: 7
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (1): id
-dbl (6): age, language, rt_word, rt_nonword, acc_word, acc_nonword
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-</div>
-<p>The power of the layered system for making figures is further highlighted by the ability to combine different types of plots. For example, rather than using a bar chart with error bars, you can easily create a single plot that includes the density of the distribution, confidence intervals, means and standard errors. In the below code, we first draw a violin plot, then layer on a boxplot, a point for the mean (note <code>geom = "point"</code>) and standard error bars (<code>geom = "errorbar"</code>).</p>
+</header><p>The power of the layered system for making figures is further highlighted by the ability to combine different types of plots. For example, rather than using a bar chart with error bars, you can easily create a single plot that includes the density of the distribution, confidence intervals, means and standard errors. In the below code, we first draw a violin plot, then layer on a boxplot, a point for the mean (note <code>geom = "point"</code>) and standard error bars (<code>geom = "errorbar"</code>).</p>
 <ul>
 <li>
 <code>fatten = NULL</code> in the boxplot geom removes the median line, which can make it easier to see the mean and error bars. Including this argument will result in the message <code>Removed 1 rows containing missing values (geom_segment)</code> and is not a cause for concern. Removing this argument will reinstate the median line.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y=</span> rt)) <span class="sc">+</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="co"># remove the median line with fatten = NULL</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>, </span>
-<span id="cb2-5"><a href="#cb2-5"></a>               <span class="at">fatten =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>, <span class="at">geom =</span> <span class="st">"point"</span>) <span class="sc">+</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_se"</span>, </span>
-<span id="cb2-8"><a href="#cb2-8"></a>               <span class="at">geom =</span> <span class="st">"errorbar"</span>, </span>
-<span id="cb2-9"><a href="#cb2-9"></a>               <span class="at">width =</span> .<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y=</span> rt)) <span class="sc">+</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="co"># remove the median line with fatten = NULL</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>, </span>
+<span id="cb1-5"><a href="#cb1-5"></a>               <span class="at">fatten =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>, <span class="at">geom =</span> <span class="st">"point"</span>) <span class="sc">+</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_se"</span>, </span>
+<span id="cb1-8"><a href="#cb1-8"></a>               <span class="at">geom =</span> <span class="st">"errorbar"</span>, </span>
+<span id="cb1-9"><a href="#cb1-9"></a>               <span class="at">width =</span> .<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="05-ch5-violin-boxplots_files/figure-html/viobox1-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
@@ -304,13 +282,13 @@ dbl (6): age, language, rt_word, rt_nonword, acc_word, acc_nonword
 </div>
 <p>It is important to note that the order of the layers matters and it is worth experimenting with the order to see where the order matters. For example, if we call <code>geom_boxplot()</code> followed by <code>geom_violin()</code>, we get the following mess:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y=</span> rt)) <span class="sc">+</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span>  </span>
-<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>,  <span class="at">geom =</span> <span class="st">"point"</span>) <span class="sc">+</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_se"</span>, </span>
-<span id="cb3-6"><a href="#cb3-6"></a>               <span class="at">geom =</span> <span class="st">"errorbar"</span>, </span>
-<span id="cb3-7"><a href="#cb3-7"></a>               <span class="at">width =</span> .<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y=</span> rt)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span>  </span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>,  <span class="at">geom =</span> <span class="st">"point"</span>) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_se"</span>, </span>
+<span id="cb2-6"><a href="#cb2-6"></a>               <span class="at">geom =</span> <span class="st">"errorbar"</span>, </span>
+<span id="cb2-7"><a href="#cb2-7"></a>               <span class="at">width =</span> .<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="05-ch5-violin-boxplots_files/figure-html/viobox1b-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
@@ -322,14 +300,14 @@ dbl (6): age, language, rt_word, rt_nonword, acc_word, acc_nonword
 <span class="header-section-number">5.0.1</span> Grouped violin-boxplots</h3>
 <p>We can map multiple variables in the violin-boxplot with the <code>fill</code> argument for the violin-boxplot. However, simply adding <code>fill</code> to the mapping causes the different components of the plot to become misaligned because they have different default positions:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y=</span> rt, <span class="at">fill =</span> language)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>, </span>
-<span id="cb4-4"><a href="#cb4-4"></a>               <span class="at">fatten =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>,  <span class="at">geom =</span> <span class="st">"point"</span>) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_se"</span>, </span>
-<span id="cb4-7"><a href="#cb4-7"></a>               <span class="at">geom =</span> <span class="st">"errorbar"</span>, </span>
-<span id="cb4-8"><a href="#cb4-8"></a>               <span class="at">width =</span> .<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y=</span> rt, <span class="at">fill =</span> language)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>, </span>
+<span id="cb3-4"><a href="#cb3-4"></a>               <span class="at">fatten =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>,  <span class="at">geom =</span> <span class="st">"point"</span>) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_se"</span>, </span>
+<span id="cb3-7"><a href="#cb3-7"></a>               <span class="at">geom =</span> <span class="st">"errorbar"</span>, </span>
+<span id="cb3-8"><a href="#cb3-8"></a>               <span class="at">width =</span> .<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="05-ch5-violin-boxplots_files/figure-html/viobox2-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
@@ -339,22 +317,22 @@ dbl (6): age, language, rt_word, rt_nonword, acc_word, acc_nonword
 </div>
 <p>To rectify this, we need to adjust the argument <code>position</code> for each of the misaligned layers. <code>position_dodge()</code> instructs R to move (dodge) the position of the plot component by the specified value; finding what value looks best can sometimes take trial and error.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># set the offset position of the geoms</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>pos <span class="ot">&lt;-</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>)</span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y=</span> rt, <span class="at">fill =</span> language)) <span class="sc">+</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">geom_violin</span>(<span class="at">position =</span> pos) <span class="sc">+</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>, </span>
-<span id="cb5-7"><a href="#cb5-7"></a>               <span class="at">fatten =</span> <span class="cn">NULL</span>, </span>
-<span id="cb5-8"><a href="#cb5-8"></a>               <span class="at">position =</span> pos) <span class="sc">+</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>, </span>
-<span id="cb5-10"><a href="#cb5-10"></a>               <span class="at">geom =</span> <span class="st">"point"</span>, </span>
-<span id="cb5-11"><a href="#cb5-11"></a>               <span class="at">position =</span> pos) <span class="sc">+</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_se"</span>, </span>
-<span id="cb5-13"><a href="#cb5-13"></a>               <span class="at">geom =</span> <span class="st">"errorbar"</span>, </span>
-<span id="cb5-14"><a href="#cb5-14"></a>               <span class="at">width =</span> .<span class="dv">1</span>,</span>
-<span id="cb5-15"><a href="#cb5-15"></a>               <span class="at">position =</span> pos)<span class="sc">+</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option=</span><span class="st">"B"</span>, <span class="at">begin=</span><span class="fl">0.5</span>, <span class="at">end=</span><span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># set the offset position of the geoms</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>pos <span class="ot">&lt;-</span> <span class="fu">position_dodge</span>(<span class="fl">0.9</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y=</span> rt, <span class="at">fill =</span> language)) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">geom_violin</span>(<span class="at">position =</span> pos) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>, </span>
+<span id="cb4-7"><a href="#cb4-7"></a>               <span class="at">fatten =</span> <span class="cn">NULL</span>, </span>
+<span id="cb4-8"><a href="#cb4-8"></a>               <span class="at">position =</span> pos) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> <span class="st">"mean"</span>, </span>
+<span id="cb4-10"><a href="#cb4-10"></a>               <span class="at">geom =</span> <span class="st">"point"</span>, </span>
+<span id="cb4-11"><a href="#cb4-11"></a>               <span class="at">position =</span> pos) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> <span class="st">"mean_se"</span>, </span>
+<span id="cb4-13"><a href="#cb4-13"></a>               <span class="at">geom =</span> <span class="st">"errorbar"</span>, </span>
+<span id="cb4-14"><a href="#cb4-14"></a>               <span class="at">width =</span> .<span class="dv">1</span>,</span>
+<span id="cb4-15"><a href="#cb4-15"></a>               <span class="at">position =</span> pos)<span class="sc">+</span></span>
+<span id="cb4-16"><a href="#cb4-16"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option=</span><span class="st">"B"</span>, <span class="at">begin=</span><span class="fl">0.5</span>, <span class="at">end=</span><span class="fl">0.8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="05-ch5-violin-boxplots_files/figure-html/viobox3-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
@@ -366,24 +344,24 @@ dbl (6): age, language, rt_word, rt_nonword, acc_word, acc_nonword
 <span class="header-section-number">5.1</span> Storing plots</h2>
 <p>Just like with datasets, plots can be saved to objects. The below code saves the histograms we produced for reaction time and accuracy to objects named <code>p1</code> and <code>p2</code>. These plots can then be viewed by calling the object name in the console.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> rt)) <span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"black"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a></span>
-<span id="cb6-4"><a href="#cb6-4"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> acc)) <span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> rt)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"black"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> acc)) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Importantly, layers can then be added to these saved objects. For example, the below code adds a theme to the plot saved in <code>p1</code> and saves it as a new object <code>p3</code>. This is important because many of the examples of <code>ggplot2</code> code you will find in online help forums use the <code>p +</code> format to build up plots but fail to explain what this means, which can be confusing to beginners.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>p3 <span class="ot">&lt;-</span> p1 <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>p3 <span class="ot">&lt;-</span> p1 <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="saving-plots-as-images" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="saving-plots-as-images">
 <span class="header-section-number">5.2</span> Saving plots as images</h2>
 <p>In addition to saving plots to objects for further use in R, the function <code>ggsave()</code> can be used to save plots as images on your hard drive. The plot will be saved to your current working directory, unless you specify an alternative location such as a folder within your current working directory.</p>
 <p>The only required argument for <code>ggsave</code> is the file name of the image file you will create, complete with file extension (this can be “eps”, “ps”, “tex”, “pdf”, “jpeg”, “tiff”, “png”, “bmp”, “svg” or “wmf”). By default, <code>ggsave()</code> will save the last plot displayed. However, you can also specify a specific plot object if you have one saved.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"my_plot.png"</span>) <span class="co"># save last displayed plot</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"my_plot.png"</span>, <span class="at">plot =</span> p3) <span class="co"># save plot p3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"my_plot.png"</span>) <span class="co"># save last displayed plot</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">"my_plot.png"</span>, <span class="at">plot =</span> p3) <span class="co"># save plot p3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The width, height and resolution of the image can all be manually adjusted. Fonts will scale with these sizes, and may look different to the preview images you see in the Viewer tab. The help documentation is useful here (type <code>?ggsave</code> in the console to access the help).</p>
 

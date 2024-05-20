@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Book Description">
+<meta name="description" content="Materials and content to introduce graduate students to using ggplot2 for data visualisation.">
 
 <title>SGSSS Data Visualisation Workshop - 9&nbsp; Additional resources</title>
 <style>
@@ -157,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-ch1-introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data visualisation principles and workshop preparation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -214,7 +214,19 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#psyteachr" id="toc-psyteachr" class="nav-link active" data-scroll-target="#psyteachr"><span class="header-section-number">9.1</span> PsyTeachR</a></li>
+  <li><a href="#installing-r-and-rstudio" id="toc-installing-r-and-rstudio" class="nav-link" data-scroll-target="#installing-r-and-rstudio"><span class="header-section-number">9.2</span> Installing R and RStudio</a></li>
+  <li><a href="#introduction-to-r-and-rstudio" id="toc-introduction-to-r-and-rstudio" class="nav-link" data-scroll-target="#introduction-to-r-and-rstudio"><span class="header-section-number">9.3</span> Introduction to R and RStudio</a></li>
+  <li><a href="#introductions-to-r-markdown" id="toc-introductions-to-r-markdown" class="nav-link" data-scroll-target="#introductions-to-r-markdown"><span class="header-section-number">9.4</span> Introductions to R Markdown</a></li>
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling"><span class="header-section-number">9.5</span> Data wrangling</a></li>
+  <li><a href="#data-visualisation" id="toc-data-visualisation" class="nav-link" data-scroll-target="#data-visualisation"><span class="header-section-number">9.6</span> Data visualisation</a></li>
+  <li><a href="#writing-reproducible-manuscripts" id="toc-writing-reproducible-manuscripts" class="nav-link" data-scroll-target="#writing-reproducible-manuscripts"><span class="header-section-number">9.7</span> Writing reproducible manuscripts</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -237,7 +249,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>There are a number of incredible open-access online resources that, using the skills you have developed in this tutorial, will allow you to start adapting your figures and plots to make them as informative as possible for your reader. Additionally, there are also many excellent resources that expand on some of the topics we have covered here briefly, particularly data wrangling, that can help you consolidate and expand your skill set.</p>
-<p><strong>PsyTeachR</strong></p>
+<section id="psyteachr" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="psyteachr"><span class="header-section-number">9.1</span> PsyTeachR</h2>
 <p>The <a href="https://psyteachr.github.io/">psyTeachR</a> team at the University of Glasgow School of Psychology and Neuroscience has successfully made the transition to teaching reproducible research using R across all undergraduate and postgraduate levels. Our curriculum now emphasizes essential ‘data science’ graduate skills that have been overlooked in traditional approaches to teaching, including programming skills, data visualisation, data wrangling and reproducible reports. Students learn about probability and inference through data simulation as well as by working with real datasets. These materials cover all the functions we have used in this tutorial in more depth and all have Creative Commons licences to allow their use and reuse without attribution.</p>
 <ul>
 <li><a href="https://psyteachr.github.io/ads/">Applied Data Skills</a></li>
@@ -247,27 +260,37 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://psyteachr.github.io/fun-quant/">Msc Fundamentals of Quantititive Analysis</a></li>
 <li><a href="https://psyteachr.github.io/reprores/">MSc Data Skills for Reproducible Research</a></li>
 </ul>
-<p><strong>Installing R and RStudio</strong></p>
+</section>
+<section id="installing-r-and-rstudio" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="installing-r-and-rstudio"><span class="header-section-number">9.2</span> Installing R and RStudio</h2>
 <ul>
 <li><a href="https://psyteachr.github.io/data-skills-v1/installing-r.html">Installing R - PsyTeachR</a></li>
 <li><a href="https://www.youtube.com/playlist?list=PLRPB0ZzEYegOZivdelOuEn-R-XUN-DOjd">Running R on your own computer (walkthrough videos) - Danielle Navarro</a></li>
 </ul>
-<p><strong>Intro to R and RStudio</strong></p>
+</section>
+<section id="introduction-to-r-and-rstudio" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="introduction-to-r-and-rstudio"><span class="header-section-number">9.3</span> Introduction to R and RStudio</h2>
 <ul>
 <li>RStudio Essentials: <a href="https://www.rstudio.com/resources/webinars/programming-part-1-writing-code-in-rstudio/">Programming - Part 1 (Writing code in RStudio)</a></li>
 <li>RStudio Essentials: <a href="https://www.rstudio.com/resources/webinars/programming-part-2-debugging-code-in-rstudio/">Programming - Part 2 (Debugging code in RStudio)</a></li>
 </ul>
-<p><strong>R Markdown</strong></p>
+</section>
+<section id="introductions-to-r-markdown" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="introductions-to-r-markdown"><span class="header-section-number">9.4</span> Introductions to R Markdown</h2>
 <ul>
 <li><a href="https://rmarkdown.rstudio.com/lesson-1.html">Introduction to R Markdown</a></li>
 <li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></li>
 </ul>
-<p><strong>Data wrangling</strong></p>
+</section>
+<section id="data-wrangling" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="data-wrangling"><span class="header-section-number">9.5</span> Data wrangling</h2>
 <ul>
 <li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
 <li><a href="https://www.tidytextmining.com/">Text Mining with R</a></li>
 </ul>
-<p><strong>Data visualisation</strong></p>
+</section>
+<section id="data-visualisation" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="data-visualisation"><span class="header-section-number">9.6</span> Data visualisation</h2>
 <ul>
 <li><a href="https://www.r-graph-gallery.com/">R Graph Gallery</a></li>
 <li><a href="https://clauswilke.com/dataviz/">Fundamentals of Data Vizualisation</a></li>
@@ -283,8 +306,16 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://nickch-k.github.io/DataCommSlides/Lecture_04_Common_R_Problems.html">Common R Mistakes in Data Viz</a> documents requests for help and common student mistakes when creating data visualisations in R</li>
 <li><a href="https://tellingstorieswithdata.com/">Telling Stories with Data</a> by Rohan Alexander is a comprehensive online book on statistical communication, programming, and modelling in R.</li>
 </ul>
+</section>
+<section id="writing-reproducible-manuscripts" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="writing-reproducible-manuscripts"><span class="header-section-number">9.7</span> Writing reproducible manuscripts</h2>
+<ul>
+<li><p><a href="https://github.com/BartlettJE/papaja_demo">Using papaja to create reproducible APA manuscripts</a> James delivered a workshop on using papaja to create reproducible APA manuscripts in RStudio.</p></li>
+<li><p><a href="https://frederikaust.com/papaja_man/">Reproducible APA manuscripts with R Markdown</a> the original authors Aust and Barth have a comprehensive online book outlining the key features of papaja.</p></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script>

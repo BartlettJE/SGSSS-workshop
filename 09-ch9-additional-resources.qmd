@@ -2,7 +2,7 @@
 
 There are a number of incredible open-access online resources that, using the skills you have developed in this tutorial, will allow you to start adapting your figures and plots to make them as informative as possible for your reader. Additionally, there are also many excellent resources that expand on some of the topics we have covered here briefly, particularly data wrangling, that can help you consolidate and expand your skill set.
 
-**PsyTeachR**
+## PsyTeachR
 
 The [psyTeachR](https://psyteachr.github.io/) team at the University of Glasgow School of Psychology and Neuroscience has successfully made the transition to teaching reproducible research using R across all undergraduate and postgraduate levels. Our curriculum now emphasizes essential ‘data science’ graduate skills that have been overlooked in traditional approaches to teaching, including programming skills, data visualisation, data wrangling and reproducible reports. Students learn about probability and inference through data simulation as well as by working with real datasets. These materials cover all the functions we have used in this tutorial in more depth and all have Creative Commons licences to allow their use and reuse without attribution.
 
@@ -13,27 +13,27 @@ The [psyTeachR](https://psyteachr.github.io/) team at the University of Glasgow 
 * [Msc Fundamentals of Quantititive Analysis](https://psyteachr.github.io/fun-quant/)
 * [MSc Data Skills for Reproducible Research](https://psyteachr.github.io/reprores/)
 
-**Installing R and RStudio**
+## Installing R and RStudio
 
 * [Installing R - PsyTeachR](https://psyteachr.github.io/data-skills-v1/installing-r.html)
 * [Running R on your own computer (walkthrough videos) - Danielle Navarro](https://www.youtube.com/playlist?list=PLRPB0ZzEYegOZivdelOuEn-R-XUN-DOjd)
 
-**Intro to R and RStudio**
+## Introduction to R and RStudio
 
 * RStudio Essentials: [Programming - Part 1 (Writing code in RStudio)](https://www.rstudio.com/resources/webinars/programming-part-1-writing-code-in-rstudio/)
 * RStudio Essentials: [Programming - Part 2 (Debugging code in RStudio)](https://www.rstudio.com/resources/webinars/programming-part-2-debugging-code-in-rstudio/) 
 
-**R Markdown**
+## Introductions to R Markdown
 
 * [Introduction to R Markdown](https://rmarkdown.rstudio.com/lesson-1.html)
 * [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
 
-**Data wrangling**
+## Data wrangling
 
 * [R for Data Science](https://r4ds.had.co.nz/)
 * [Text Mining with R](https://www.tidytextmining.com/)
 
-**Data visualisation**
+## Data visualisation
 
 * [R Graph Gallery](https://www.r-graph-gallery.com/)
 * [Fundamentals of Data Vizualisation](https://clauswilke.com/dataviz/)
@@ -49,3 +49,8 @@ The [psyTeachR](https://psyteachr.github.io/) team at the University of Glasgow 
 * [Common R Mistakes in Data Viz](https://nickch-k.github.io/DataCommSlides/Lecture_04_Common_R_Problems.html) documents requests for help and common student mistakes when creating data visualisations in R
 * [Telling Stories with Data](https://tellingstorieswithdata.com/) by Rohan Alexander is a comprehensive online book on statistical communication, programming, and modelling in R. 
 
+## Writing reproducible manuscripts 
+
+* [Using papaja to create reproducible APA manuscripts](https://github.com/BartlettJE/papaja_demo) James delivered a workshop on using papaja to create reproducible APA manuscripts in RStudio.
+
+* [Reproducible APA manuscripts with R Markdown](https://frederikaust.com/papaja_man/) the original authors Aust and Barth have a comprehensive online book outlining the key features of papaja. 

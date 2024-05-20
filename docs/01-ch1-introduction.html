@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.353">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="description" content="Book Description">
-<title>SGSSS Data Visualisation Workshop - 1&nbsp; Introduction</title>
+<meta name="description" content="Materials and content to introduce graduate students to using ggplot2 for data visualisation.">
+<title>SGSSS Data Visualisation Workshop - 1&nbsp; Data visualisation principles and workshop preparation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,7 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-ch1-introduction.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-ch1-introduction.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data visualisation principles and workshop preparation</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -177,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-ch1-introduction.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data visualisation principles and workshop preparation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -266,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">
-<span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span>
+<span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data visualisation principles and workshop preparation</span>
 </h1>
 </div>
 
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>The basic principles of data visualisation;</p></li>
 <li><p>A very brief overview of setting up and getting started on RStudio;</p></li>
 <li><p>The structure of the ggplot2 data visualisation package with different customisation options;</p></li>
-<li><p>Four different types of plots for four different types of data social science researchers are likely to encounter (bar plots for count data, scatterplots for correlational data, violin-boxplots for distributions, and line plots for time series data).</p></li>
+<li><p>Three different types of plots for different types of data social science researchers are likely to encounter (bar plots for count data, scatterplots for correlational data, violin-boxplots for distributions, and a bonus chapter on line plots for time series data we will not cover in the workshop).</p></li>
 </ul>
 <p>This workshop is based on PsyTeachR materials with some changes and additions specific to this workshop. The materials have been adapted from:</p>
 <p>Nordmann, E. &amp; DeBruine, L. (2022). Applied Data Skills (1.0). Zenodo. https://doi.org/10.5281/zenodo.6365078</p>
@@ -405,11 +405,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We hope that this workshop will inspire you to start experimenting with R! In today’s session we are simply focusing on visualisation and don’t really touch on data wrangling (which is the most time-consuming part of any data analysis). The data you will encounter in the wild will be messier than what you see today - it’s perfectly acceptable to start by cleaning your data on software that you feel more comfortable with and simply reading the clean data into R for visualisation. However, we do recommend eventually moving onto doing all parts of the analysis in R for the reproducibility benefits outlined above. If you want to dip your toes into data wrangling, the PsyTeachR team have a wealth of materials for different levels of expertise freely available online: https://psyteachr.github.io/</p>
 </section><section id="preparing-for-the-workshop-a-very-short-introduction-to-r" class="level2" data-number="1.3"><h2 data-number="1.3" class="anchored" data-anchor-id="preparing-for-the-workshop-a-very-short-introduction-to-r">
 <span class="header-section-number">1.3</span> Preparing for the workshop: A very short introduction to R</h2>
-<p>We will work through key features of working with R/RStudio in the workshop, but to ensure we can make the most of the time we have together, please read through this section to install R and RStudio, and make sure you have all the files you need.</p>
+<p>We will work through key features of working with R/RStudio in the workshop, but to ensure we can make the most of the time we have together, please read through this section to install R and RStudio, make sure you have all the files you need, and learn briefly how to navigate around RStudio.</p>
 <section id="installing-r-and-rstudio" class="level3" data-number="1.3.1"><h3 data-number="1.3.1" class="anchored" data-anchor-id="installing-r-and-rstudio">
 <span class="header-section-number">1.3.1</span> Installing R and RStudio</h3>
-<p>If you don’t have R and RStudio installed, please follow the detailed instructions here: https://emilynordmann.github.io/workshop-dataviz/installing-r.html</p>
-<p>Alternatively, you can create a free profile for RStudio Cloud: https://rstudio.cloud/</p>
+<p>If you don’t have R and RStudio installed, please follow the detailed instructions here: <a href="https://emilynordmann.github.io/workshop-dataviz/installing-r.html">https://emilynordmann.github.io/workshop-dataviz/installing-r.html</a></p>
+<p>Alternatively, you can create a free profile for RStudio Cloud: <a href="https://rstudio.cloud/">https://rstudio.cloud/</a></p>
 </section><section id="download-the-workshop-materials-and-data" class="level3" data-number="1.3.2"><h3 data-number="1.3.2" class="anchored" data-anchor-id="download-the-workshop-materials-and-data">
 <span class="header-section-number">1.3.2</span> Download the workshop materials and data</h3>
 <p>We have an Open Science Framework (OSF) page where you can download all the materials for the workshop separately, so please visit <a href="https://osf.io/9hy5s/">this page: SGSSS Data Visualisation Workshop</a>.</p>

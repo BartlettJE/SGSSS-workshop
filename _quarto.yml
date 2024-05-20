@@ -7,11 +7,11 @@ execute:
   freeze: auto
 book:
   title: SGSSS Data Visualisation Workshop
-  subtitle: 'Materials and content to introduce graduate students to using ggplot2 for data visualisation.'
+  subtitle: ""
   author: James Bartlett and Wilhelmiina Toivo
   doi: ''
   license: CC-BY
-  description: Book Description
+  description: "Materials and content to introduce graduate students to using ggplot2 for data visualisation."
   cover-image: images/logos/logo.png
   image: images/logos/logo.png
   favicon: images/logos/logo.png

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.353">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="description" content="Book Description">
+<meta name="description" content="Materials and content to introduce graduate students to using ggplot2 for data visualisation.">
 <title>SGSSS Data Visualisation Workshop - 6&nbsp; Line plots</title>
 <style>
 code{white-space: pre-wrap;}
@@ -177,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-ch1-introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data visualisation principles and workshop preparation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -265,39 +265,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-</header><div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.3     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.0
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-</div>
-<p>In this final data visualisation chapter, we will show one option for visualisation of time series data: line plots. There are many other ways of visualising data like this, such as heatmaps: https://r-graph-gallery.com/283-the-hourly-heatmap.html, or stacked area charts: https://r-graph-gallery.com/136-stacked-area-chart, which you will be able to create with ggplot2 as well.</p>
+</header><p>In this final data visualisation chapter, we will show one option for visualisation of time series data: line plots. There are many other ways of visualising data like this, such as heatmaps: https://r-graph-gallery.com/283-the-hourly-heatmap.html, or stacked area charts: https://r-graph-gallery.com/136-stacked-area-chart, which you will be able to create with ggplot2 as well.</p>
 <p>For this chapter, instead of the simulated dataset, we will use a real dataset on covid-19 vaccinations in Denmark from Our World in Data (https://ourworldindata.org/). We have cleaned the data for the purposes of this workshop and it can be downloaded from our <a href="https://osf.io/wv7bn/" target="_blank">workshop OSF page</a>.</p>
 <p>Make sure you download the data file and paste it into your project folder before trying to run the code below.</p>
 <section id="read-in-the-data" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="read-in-the-data">
 <span class="header-section-number">6.1</span> Read in the data</h2>
 <p>The code below will create a new object <code>vaccinations</code> and read in the datafile <code>vaccinations_by_age_group.csv</code>:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>vaccinations <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"vaccinations_by_age_group.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 497 Columns: 4
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (2): location, age_group
-dbl  (1): people_fully_vaccinated_per_hundred
-date (1): date
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>vaccinations <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"vaccinations_by_age_group.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this data set, we have vaccination data from Denmark for different age groups.</p>
 <ul>
@@ -309,8 +284,8 @@ date (1): date
 <span class="header-section-number">6.2</span> Line plot</h2>
 <p>Let’s start by making a simple line plot. For a line plot, you need to define the <code>x</code> and the <code>y</code> axes in your <code>aes()</code> function.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> people_fully_vaccinated_per_hundred))<span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> people_fully_vaccinated_per_hundred))<span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="06-ch6-lineplots_files/figure-html/line1-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
@@ -322,8 +297,8 @@ date (1): date
 <span class="header-section-number">6.2.1</span> Grouping the plot</h3>
 <p>Unless you enjoy recreating album covers from the Arctic Monkeys, you can see that this plot doesn’t make any sense. That’s because there are multiple data points for each of the dates (each of the age groups have their own entry). To make a plot that makes sense, we need to <code>group</code> the plot by age group. This means that the <code>ggplot</code> function will split the data based on the variable you specify in the group argument.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> people_fully_vaccinated_per_hundred, <span class="at">group=</span>age_group))<span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> people_fully_vaccinated_per_hundred, <span class="at">group=</span>age_group))<span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="06-ch6-lineplots_files/figure-html/line2-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
@@ -333,9 +308,9 @@ date (1): date
 </div>
 <p>Alternatively, you could facet the plot, but then you won’t be able to see the trends in one plot, which is usually important for time series data.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(date, people_fully_vaccinated_per_hundred))<span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>age_group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(date, people_fully_vaccinated_per_hundred))<span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>age_group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="06-ch6-lineplots_files/figure-html/line3-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
@@ -347,11 +322,11 @@ date (1): date
 <span class="header-section-number">6.2.2</span> Customising the plot</h3>
 <p>Finally, we’ll add colour to the plot to distinguish the age groups, and we’ll add another layer with <code>geom_point()</code> to mark the different time points more clearly, we’ll change the theme of the plot and make it colour-blind friendly.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>people_fully_vaccinated_per_hundred, <span class="at">colour=</span>age_group, <span class="at">group=</span>age_group))<span class="sc">+</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"D"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>people_fully_vaccinated_per_hundred, <span class="at">colour=</span>age_group, <span class="at">group=</span>age_group))<span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"D"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="06-ch6-lineplots_files/figure-html/line4-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
@@ -363,13 +338,13 @@ date (1): date
 <span class="header-section-number">6.2.3</span> Dealing with a date axis</h3>
 <p>One thing to note is that the x-axis here is with dates instead of numbers (if you look at the <code>vaccinations</code> dataframe, the datatype is <code>unknown</code>. Luckily, there are customisation options for this on ggplot! We can use the <code>scale_x_date</code> function as a layer to modify and work with date formats:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>people_fully_vaccinated_per_hundred, <span class="at">colour=</span>age_group, <span class="at">group=</span>age_group))<span class="sc">+</span> </span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"D"</span>)<span class="sc">+</span> </span>
-<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b %Y"</span>, <span class="co"># %b = abbreviated month name; %Y = Year with century</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>               <span class="at">date_breaks =</span> <span class="st">"3 months"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>people_fully_vaccinated_per_hundred, <span class="at">colour=</span>age_group, <span class="at">group=</span>age_group))<span class="sc">+</span> </span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"D"</span>)<span class="sc">+</span> </span>
+<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b %Y"</span>, <span class="co"># %b = abbreviated month name; %Y = Year with century</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>               <span class="at">date_breaks =</span> <span class="st">"3 months"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="06-ch6-lineplots_files/figure-html/line5-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
