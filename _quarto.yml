@@ -19,9 +19,6 @@ book:
   google-analytics: ''
   page-navigation: true
   search: true
-  downloads:
-  - pdf
-  - epub
   sharing:
   - twitter
   - facebook
