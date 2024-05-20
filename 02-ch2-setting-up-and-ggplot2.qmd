@@ -1,8 +1,10 @@
-# Setting up
+# Starting a new project and introduction to ggplot2
 
 ## Projects
 
-Projects are a useful way of keeping all your code, data, and output in one place. To create a new project, open RStudio and click `File - New Project - New Directory - New Project`. You will be prompted to give the project a name and select a location for where to store the project on your computer. Once you have done this, click `Create Project`. Download the simulated dataset `ldt_data.csv`, vaccinations data `vaccinations_by_age_group.csv`, and the workbook `SGSSS summer school data viz workbook.Rmd` from [this OSF project](https://osf.io/fxtyn/){target="_blank"} and then move them all to this folder. 
+Projects are a useful way of keeping all your code, data, and output in one place. To create a new project, open RStudio and click `File - New Project - New Directory - New Project`. You will be prompted to give the project a name and select a location for where to store the project on your computer. Once you have done this, click `Create Project`. 
+
+If you have not already, make sure you download all the workbooks and data from [this OSF project](https://osf.io/fxtyn/){target="_blank"} or [download them here directly as a .zip file](SGSSS_dataviz_materials.zip). Once you have downloaded them, save or extract them to the new folder you created for the project. 
 
 The files pane on the bottom right of RStudio should now display this folder and the files it contains - this is known as your *working directory*.
 
