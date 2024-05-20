@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="description" content="Book Description">
+<title>SGSSS Data Visualisation Workshop - 8&nbsp; Code for data visualisation principles</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./09-ch9-additional-resources.html" rel="next">
+<link href="./07-ch7-group-project.html" rel="prev">
+<link href="./images/logos/logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+<link rel="stylesheet" href="include/booktem.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/glossary.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-ch8-customisation.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Code for data visualisation principles</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">SGSSS Data Visualisation Workshop</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+<li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./SGSSS-Data-Visualisation-Workshop.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./SGSSS-Data-Visualisation-Workshop.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+</div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+<li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=%7Curl%7C">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=%7Curl%7C">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=%7Curl%7C">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+</div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-ch1-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-ch2-setting-up-and-ggplot2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Setting up</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-ch3-barplots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Bar plots</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-ch4-scatterplots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Scatterplots</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-ch5-violin-boxplots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Violin-boxplots</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-ch6-lineplots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Line plots</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-ch7-group-project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Group task</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-ch8-customisation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Code for data visualisation principles</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-ch9-additional-resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Additional resources</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./webexercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Webexercises</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#y-axis-truncation" id="toc-y-axis-truncation" class="nav-link active" data-scroll-target="#y-axis-truncation"><span class="header-section-number">8.1</span> Y-axis truncation</a></li>
+  <li><a href="#colour-vision-impairments" id="toc-colour-vision-impairments" class="nav-link" data-scroll-target="#colour-vision-impairments"><span class="header-section-number">8.2</span> Colour-vision impairments</a></li>
+  <li><a href="#highlight-comparisons-of-interest" id="toc-highlight-comparisons-of-interest" class="nav-link" data-scroll-target="#highlight-comparisons-of-interest"><span class="header-section-number">8.3</span> Highlight comparisons of interest</a></li>
+  <li><a href="#integrate-relevant-text" id="toc-integrate-relevant-text" class="nav-link" data-scroll-target="#integrate-relevant-text"><span class="header-section-number">8.4</span> Integrate relevant text</a></li>
+  <li><a href="#guide-viewers-to-your-conceptual-message" id="toc-guide-viewers-to-your-conceptual-message" class="nav-link" data-scroll-target="#guide-viewers-to-your-conceptual-message"><span class="header-section-number">8.5</span> Guide viewers to your conceptual message</a></li>
+  <li><a href="#adding-titles-and-subtitles" id="toc-adding-titles-and-subtitles" class="nav-link" data-scroll-target="#adding-titles-and-subtitles"><span class="header-section-number">8.6</span> Adding titles and subtitles</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Code for data visualisation principles</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header><p>In chapter 1, we introduced you to data visualisation principles. At the time, we hid the code behind creating the plots we used to demonstrate our points as you may not have used R before. For the group task in chapter 7, we want you to create a “good” and “bad” version of a plot, so we thought it would be a good idea to demonstrate the code we used in case you want to use it for your group task.</p>
+<section id="y-axis-truncation" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="y-axis-truncation">
+<span class="header-section-number">8.1</span> Y-axis truncation</h2>
+<p>If you want to shorten the y-axis, it is not the most intuitive of functions in ggplot. First, if we recreate the more honest version of the plot:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Behind the scenes, we simulated some values for group A and group B and saved them in data</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">y =</span> DV)) <span class="sc">+</span> </span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"summary"</span>, <span class="at">fun.y =</span> <span class="st">"mean"</span>) <span class="sc">+</span> <span class="co">#Normally not a good idea to calculate the mean for a bar plot, but for demonstration purposes</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>), <span class="co"># Manually set the limits</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">25</span>))<span class="sc">+</span> <span class="co"># from 0 to 100 in steps of 25</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/honest plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We know its normally not a good idea to summarise continuous data with the mean per bar, but see this as a demonstration perfect for the “bad” plot. If you want to shorten the y-axis, intuitively, you might think you could just shorten the limits:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Behind the scenes, we simulated some values for group A and group B and saved them in data</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">y =</span> DV)) <span class="sc">+</span> </span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"summary"</span>, <span class="at">fun.y =</span> <span class="st">"mean"</span>) <span class="sc">+</span> <span class="co">#Normally not a good idea to calculate the mean for a bar plot, but for demonstration purposes</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="dv">60</span>), <span class="co"># Manually set the limits</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">45</span>, <span class="dv">60</span>, <span class="dv">5</span>))<span class="sc">+</span> <span class="co"># from 0 to 100 in steps of 25</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/empty plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Your intuition would be wrong. Here, setting the limits will remove data outside of these limits, so you might find yourself with an empty plot as you removed so many data points.</p>
+<p>To shorten the y-axis, we need an extra function called <code>coord_cartesian</code> (see the <a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">help page online</a> for further details). In essence, this function allows you to zoom in on a part of the graph and it will no longer remove data points:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">y =</span> DV)) <span class="sc">+</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"summary"</span>, <span class="at">fun.y =</span> <span class="st">"mean"</span>) <span class="sc">+</span> </span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="dv">60</span>))<span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/sneaky plot-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="colour-vision-impairments" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="colour-vision-impairments">
+<span class="header-section-number">8.2</span> Colour-vision impairments</h2>
+<p>We already demonstrated how to change colours in chapter 3, but you might want to know how to manually select colours. There are different ways of selecting colours which you could use to create a nice colour-blind friendly plot for the “good” submission, or you could select the most garish colours imaginable for the “bad” submission.</p>
+<p>Let’s start with sensible colours to create a colour-blind friendly plot without any input:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#scatterplot using dat_clean for response time by accuracy, and label by condition</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> rt, <span class="at">y =</span> acc, <span class="at">colour =</span> condition)) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"D"</span>, <span class="co"># Which option from A to E? </span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>                         <span class="at">name =</span> <span class="st">"Condition"</span>, <span class="co"># Name for the legend title</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Non-Word"</span>, <span class="st">"Word"</span>))<span class="sc">+</span> <span class="co"># Names for the legend conditions </span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/base colour-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Using the viridis colour scale, you have the option between palettes A to E. For all the options, you can look at the documentation by running <code>?scale_colour_viridis_d</code> in the console, or looking at <a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html">this vignette online</a>.</p>
+<p>To play around with colours, you can choose one of the other options:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#scatterplot using dat_clean for response time by accuracy, and label by condition</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> rt, <span class="at">y =</span> acc, <span class="at">colour =</span> condition)) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"A"</span>, <span class="co"># Which option from A to E? </span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>                         <span class="at">name =</span> <span class="st">"Condition"</span>, <span class="co"># Name for the legend title</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Non-Word"</span>, <span class="st">"Word"</span>))<span class="sc">+</span> <span class="co"># Names for the legend conditions </span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/option A-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As a discrete scale, the function will add colours across the palette for the number of conditions. Alternatively, you can manually set where you have the colour map to begin and end. This provides a little more control over your colour combinations while still coming from a colour-blind friendly palette:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#scatterplot using dat_clean for response time by accuracy, and label by condition</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> rt, <span class="at">y =</span> acc, <span class="at">colour =</span> condition)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"D"</span>, <span class="co"># Which option from A to E? </span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>                         <span class="at">begin =</span> <span class="fl">0.2</span>, <span class="co"># Where do you want the colour map to start? </span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>                         <span class="at">end =</span> <span class="fl">0.8</span>, <span class="co"># Where do you want the colour map to end? </span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>                         <span class="at">name =</span> <span class="st">"Condition"</span>, <span class="co"># Name for the legend title</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Non-Word"</span>, <span class="st">"Word"</span>))<span class="sc">+</span> <span class="co"># Names for the legend conditions </span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/set begin and end-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If you want full control over your colour choices (including bad choices), then you can manually select colours using HTML/CSS names or hex codes (see this <a href="https://www.rapidtables.com/web/color/RGB_Color.html">online guide for names and a colour selector</a>). For example, we can select some garish colours using specific names:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> rt, <span class="at">y =</span> acc, <span class="at">colour =</span> condition)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">scale_colour_discrete</span>(<span class="at">name =</span> <span class="st">"Condition"</span>, <span class="co"># Name of the legend</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Non-Word"</span>, <span class="st">"Word"</span>), <span class="co">#Name of the conditions</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>                        <span class="at">type =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"cyan"</span>))<span class="sc">+</span> <span class="co"># here you can manually select colours for the number of conditions you have</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/manual colour select-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="highlight-comparisons-of-interest" class="level2" data-number="8.3"><h2 data-number="8.3" class="anchored" data-anchor-id="highlight-comparisons-of-interest">
+<span class="header-section-number">8.3</span> Highlight comparisons of interest</h2>
+<p>When it comes to changing the order of comparisons, it is simple to swap the variables as we just change which variable is set to x and which is set to fill:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Condition on x, language as separate colours for the legend</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y=</span> rt, <span class="at">fill =</span> language)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Condition"</span>, <span class="at">y =</span> <span class="st">"Response Time (ms)"</span>) <span class="sc">+</span> </span>
+<span id="cb8-5"><a href="#cb8-5"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option=</span><span class="st">"B"</span>, </span>
+<span id="cb8-6"><a href="#cb8-6"></a>                       <span class="at">begin=</span><span class="fl">0.65</span>, </span>
+<span id="cb8-7"><a href="#cb8-7"></a>                       <span class="at">end=</span><span class="fl">0.85</span>, </span>
+<span id="cb8-8"><a href="#cb8-8"></a>                       <span class="at">name =</span> <span class="st">"Language"</span>) <span class="sc">+</span> </span>
+<span id="cb8-9"><a href="#cb8-9"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Non-Word"</span>, <span class="st">"Word"</span>))<span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/flipping comparisons-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># language on x, condition as separate colours for the legend</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> language, <span class="at">y=</span> rt, <span class="at">fill =</span> condition)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Language"</span>, <span class="at">y =</span> <span class="st">"Response Time (ms)"</span>) <span class="sc">+</span> </span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option=</span><span class="st">"B"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6"></a>                       <span class="at">begin=</span><span class="fl">0.65</span>, <span class="at">end=</span><span class="fl">0.85</span>, </span>
+<span id="cb9-7"><a href="#cb9-7"></a>                       <span class="at">name =</span> <span class="st">"Condition"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Non-Word"</span>, <span class="st">"Word"</span>))<span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/flipping comparisons-2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>However, it can be a little tricky to switch the order of groups/conditions within a variable. For example, if you wanted Bilingual or Word presenting first, or to order the conditions from largest to smallest. We have not covered data wrangling in this workshop, so we do not expect you to know how factors work behind the scenes in R. In short, factors tell R the names are predefined discrete groups/conditions and you can provide them with an order. So, we can edit the variable we already have to switch the order. Previously, we had non-word then word since R will order things alphabetically by default.</p>
+<div class="dangerous">
+<p>It is really important you change the variable order first or you might mislabel the plot. If you simply switched the labels above to <code>labels = c("Word", "Non-Word")</code>, it would have changed the labels but not the underlying data.</p>
+</div>
+<p>In the code below, we first change the order of the factor, then run the same code as above to create the plot. We then switch the edited labels around in <code>scale_fill_viridis_d</code> to match our new variable order. Switching the variable order might be useful in future for highlighting comparisons of interest if you wanted to sort the groups by ascending or descending order, so people can see the pattern clearly, instead of scanning across the plot to compare distant bars etc.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Here, we are editing a preexisting variable, so we start with the data frame and variable to save it as the same object</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co"># On the right, we use the factor function to edit the same variable since we are editing it, not creating a new variable</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co"># In level, this is where we set the order. By default, it was nonword and word since it will use alphabetical order</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># The labels must be exactly the same as they are listed in the data or it will throw an error</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a>dat_clean<span class="sc">$</span>condition <span class="ot">&lt;-</span> <span class="fu">factor</span>(dat_clean<span class="sc">$</span>condition, </span>
+<span id="cb10-7"><a href="#cb10-7"></a>                              <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"word"</span>, <span class="st">"nonword"</span>)) </span>
+<span id="cb10-8"><a href="#cb10-8"></a></span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="fu">ggplot</span>(dat_clean, <span class="fu">aes</span>(<span class="at">x =</span> language, <span class="at">y=</span> rt, <span class="at">fill =</span> condition)) <span class="sc">+</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb10-11"><a href="#cb10-11"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Language"</span>, <span class="at">y =</span> <span class="st">"Response Time (ms)"</span>) <span class="sc">+</span> </span>
+<span id="cb10-12"><a href="#cb10-12"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option=</span><span class="st">"B"</span>,</span>
+<span id="cb10-13"><a href="#cb10-13"></a>                       <span class="at">begin=</span><span class="fl">0.65</span>, <span class="at">end=</span><span class="fl">0.85</span>, </span>
+<span id="cb10-14"><a href="#cb10-14"></a>                       <span class="at">name =</span> <span class="st">"Condition"</span>,</span>
+<span id="cb10-15"><a href="#cb10-15"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Word"</span>, <span class="st">"Non-word"</span>))<span class="sc">+</span> <span class="co">#switched around from the previous attempt</span></span>
+<span id="cb10-16"><a href="#cb10-16"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/switch condition order-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="integrate-relevant-text" class="level2" data-number="8.4"><h2 data-number="8.4" class="anchored" data-anchor-id="integrate-relevant-text">
+<span class="header-section-number">8.4</span> Integrate relevant text</h2>
+<p>If you want to annotate your plots, there are a few ways of doing it. Many people will create the base plot in R and then add annotations or extra design elements in additional software such as Photoshop. However, adding annotations in R with the rest of the plot means all the process is reproducible, so it is worth learning how to add even basic additions.</p>
+<p>The first useful ggplot function is called <code>annotate()</code>. This is a flexible layer where you can select from different elements such as text, arrows, or shapes. See <a href="https://ggplot2.tidyverse.org/reference/annotate.html">the online documentation</a> for further examples and guidance.</p>
+<p>We will work with the smaller version of the vaccination data we used in Chapter 1, excluding the youngest age groups. In the code below, we use the same code as the line plots in Chapter 6, but we have added an additional annotate layer to the end. For this first example, imagine we wanted to highlight a specific time period to draw people’s attention to:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>people_fully_vaccinated_per_hundred, <span class="at">colour=</span>age_group, <span class="at">group=</span>age_group))<span class="sc">+</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"D"</span>)<span class="sc">+</span> </span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b %Y"</span>, <span class="co"># %b = abbreviated month name; %Y = Year with century</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>               <span class="at">date_breaks =</span> <span class="st">"3 months"</span>) <span class="sc">+</span> </span>
+<span id="cb11-8"><a href="#cb11-8"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"People Fully Vaccinated Per 100"</span>, <span class="at">x =</span> <span class="st">"Date"</span>) <span class="sc">+</span> </span>
+<span id="cb11-9"><a href="#cb11-9"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"rect"</span>, <span class="co"># What geom do we want? Text, arrow, rect? </span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>           <span class="at">xmin =</span> <span class="fu">as.Date</span>(<span class="st">"2021-06-01"</span>), <span class="co"># Start of region on X - awkward as we're working with dates</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a>           <span class="at">xmax =</span> <span class="fu">as.Date</span>(<span class="st">"2021-09-01"</span>), <span class="co"># End of region on X - awkward as we're working with dates</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a>           <span class="at">ymin =</span> <span class="dv">0</span>, <span class="co"># Start of region on y</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a>           <span class="at">ymax =</span> <span class="dv">100</span>, <span class="co"># End of region on y</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a>           <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="co"># Make it more transparent</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/rectangle geom-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In this code, we created a semi-transparent rectangle to highlight the time period between June and September 2021. In the annotate function, you select which geom you want to create, then define its properties like the size across the x- and y-axis. Note: the x-axis is slightly awkward to work with in this example as we are working with dates, so we have to specify the x width using dates.</p>
+<p>We can also add another layer to add text:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>people_fully_vaccinated_per_hundred, <span class="at">colour=</span>age_group, <span class="at">group=</span>age_group))<span class="sc">+</span> </span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"D"</span>)<span class="sc">+</span> </span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b %Y"</span>, <span class="co"># %b = abbreviated month name; %Y = Year with century</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>               <span class="at">date_breaks =</span> <span class="st">"3 months"</span>) <span class="sc">+</span> </span>
+<span id="cb12-8"><a href="#cb12-8"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"People Fully Vaccinated Per 100"</span>, <span class="at">x =</span> <span class="st">"Date"</span>) <span class="sc">+</span> </span>
+<span id="cb12-9"><a href="#cb12-9"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"rect"</span>, <span class="co"># What geom do we want? Text, arrow, rect? </span></span>
+<span id="cb12-10"><a href="#cb12-10"></a>           <span class="at">xmin =</span> <span class="fu">as.Date</span>(<span class="st">"2021-06-01"</span>), <span class="co"># Start of region on X - awkward as we're working with dates</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>           <span class="at">xmax =</span> <span class="fu">as.Date</span>(<span class="st">"2021-09-01"</span>), <span class="co"># End of region on X - awkward as we're working with dates</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a>           <span class="at">ymin =</span> <span class="dv">0</span>, <span class="co"># Start of region on y</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a>           <span class="at">ymax =</span> <span class="dv">100</span>, <span class="co"># End of region on y</span></span>
+<span id="cb12-14"><a href="#cb12-14"></a>           <span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span> <span class="co"># Make it more transparent</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>,</span>
+<span id="cb12-16"><a href="#cb12-16"></a>           <span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">"2021-12-01"</span>),</span>
+<span id="cb12-17"><a href="#cb12-17"></a>           <span class="at">y =</span> <span class="dv">50</span>,</span>
+<span id="cb12-18"><a href="#cb12-18"></a>           <span class="at">label =</span> <span class="st">"Something happened </span><span class="sc">\n</span><span class="st">during this time window..."</span>) <span class="co"># add \n to break to a new line</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/simple text-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In the additional code, we added another <code>annotate()</code> layer but we needed slightly fewer arguments when creating text. We selected the x-axis location using a date again, then how high we wanted it on the y-axis. Do not worry if the annotations first appear in the wrong location, it can take a little trial and error to see where looks best. Since we defined a text option, we specify what we want to say with the label argument. If you want to create a line break for longer text, you can add <code>\n</code> to your label.</p>
+<p>For the plot we created in Chapter 1, we used a slightly different way of creating text as it was easier to plot multiple labels and avoid overlapping. Instead of <code>annotate()</code>, we used <code>geom_text()</code> instead. The process here was more complicated and required some data wrangling, so do not worry if this makes less sense as we did not cover it in the workshop. We have added more comments than usual, so hopefully you can see what is happening when you have time to read over the materials.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Wrangling time first - we want to create a separate little dataset so we do not have to define each element later</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co"># 1. Create a new object from our original vaccinations dataset</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co"># 2. Filter the dataset down to the last date, so we just have one set of age groups and final measurements</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>age_labels <span class="ot">&lt;-</span> vaccinations <span class="sc">%&gt;%</span> </span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">filter</span>(date <span class="sc">==</span> <span class="fu">as.Date</span>(<span class="st">"2022-05-06"</span>))</span>
+<span id="cb13-6"><a href="#cb13-6"></a></span>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="co"># Create the exact same plot as the previous line plots</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>people_fully_vaccinated_per_hundred, <span class="at">colour=</span>age_group, <span class="at">group=</span>age_group))<span class="sc">+</span> </span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
+<span id="cb13-13"><a href="#cb13-13"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"D"</span>)<span class="sc">+</span> </span>
+<span id="cb13-14"><a href="#cb13-14"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b %Y"</span>, <span class="co"># %b = abbreviated month name; %Y = Year with century</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a>               <span class="at">date_breaks =</span> <span class="st">"3 months"</span>) <span class="sc">+</span> </span>
+<span id="cb13-16"><a href="#cb13-16"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"People Fully Vaccinated Per 100"</span>, <span class="at">x =</span> <span class="st">"Date"</span>) <span class="sc">+</span> </span>
+<span id="cb13-17"><a href="#cb13-17"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> age_labels, <span class="co"># Take our new smaller dataset</span></span>
+<span id="cb13-18"><a href="#cb13-18"></a>            <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">"2022-05-25"</span>), <span class="co">#Slightly later date, so it does not overlap with the line</span></span>
+<span id="cb13-19"><a href="#cb13-19"></a>                <span class="at">y =</span> people_fully_vaccinated_per_hundred, <span class="co"># Unique value of y for each age group</span></span>
+<span id="cb13-20"><a href="#cb13-20"></a>                <span class="at">label =</span> age_group), <span class="co"># Unique label for each age group </span></span>
+<span id="cb13-21"><a href="#cb13-21"></a>            <span class="at">check_overlap =</span> <span class="cn">TRUE</span>) <span class="co"># Argument that prevents text overlapping </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/label line graph-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To provide a little more explanation to the new <code>geom_text()</code> layer, we can use it like previous geom layers like <code>geom_line</code>. We can use a different data source as the main plot by defining a data frame to use. We can then use aesthetic elements to control how we plot the data.</p>
+<p>To be more efficient, the wrangling at the start took the original data frame and limited it to the final date. This meant we could take the labels and y-axis heights to help us plot the labels without individually defining each age group. We selected a date slightly later than the final measurement so the text did not overlap with the lines. We used the vaccination rate to create unique values for y level with each line. Finally, we used the age group column to add the label to each line. This geom takes previous customisation options, so we have the added bonus here of matching the colour scheme. If you wanted to override the previous colour scheme, you would define the colour outside the aes argument:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Create the exact same plot as the previous line plots</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">ggplot</span>(vaccinations, <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>people_fully_vaccinated_per_hundred, <span class="at">colour=</span>age_group, <span class="at">group=</span>age_group))<span class="sc">+</span> </span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
+<span id="cb14-7"><a href="#cb14-7"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"D"</span>)<span class="sc">+</span> </span>
+<span id="cb14-8"><a href="#cb14-8"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_labels =</span> <span class="st">"%b %Y"</span>, <span class="co"># %b = abbreviated month name; %Y = Year with century</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>               <span class="at">date_breaks =</span> <span class="st">"3 months"</span>) <span class="sc">+</span> </span>
+<span id="cb14-10"><a href="#cb14-10"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"People Fully Vaccinated Per 100"</span>, <span class="at">x =</span> <span class="st">"Date"</span>) <span class="sc">+</span> </span>
+<span id="cb14-11"><a href="#cb14-11"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> age_labels, <span class="co"># Take our new smaller dataset</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a>            <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">"2022-05-25"</span>), <span class="co">#Slightly later date, so it does not overlap with the line</span></span>
+<span id="cb14-13"><a href="#cb14-13"></a>                <span class="at">y =</span> people_fully_vaccinated_per_hundred, <span class="co"># Unique value of y for each age group</span></span>
+<span id="cb14-14"><a href="#cb14-14"></a>                <span class="at">label =</span> age_group), <span class="co"># Unique label for each age group </span></span>
+<span id="cb14-15"><a href="#cb14-15"></a>            <span class="at">check_overlap =</span> <span class="cn">TRUE</span>, <span class="co"># Argument that prevents text overlapping </span></span>
+<span id="cb14-16"><a href="#cb14-16"></a>            <span class="at">colour =</span> <span class="st">"black"</span>) <span class="co"># Manually set the colour outside aes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/change text colour-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="guide-viewers-to-your-conceptual-message" class="level2" data-number="8.5"><h2 data-number="8.5" class="anchored" data-anchor-id="guide-viewers-to-your-conceptual-message">
+<span class="header-section-number">8.5</span> Guide viewers to your conceptual message</h2>
+<p>For this section in Chapter 1, our main message was to respect common associations such as more positive means higher values. It can be deeply confusing to people - particularly those with less subject experience - to go against these associations. The example we used was from example EEG data where, historically, amplitude measured in micro Volts was plotted with negative at the top and positive at the bottom. In ggplot, we would have to intervene to flip the y-axis. For a starting point, lets see what the plot looks like normally (and we would argue most logically):</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Create a line plot for time series, grouping by condition to join the lines</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">ggplot</span>(impulsivity_long, <span class="fu">aes</span>(<span class="at">x=</span>Time_point, <span class="at">y=</span>mean_mV, <span class="at">colour=</span>Condition, <span class="at">group=</span>Condition))<span class="sc">+</span> </span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"D"</span>, <span class="at">begin =</span> <span class="fl">0.5</span>, <span class="at">end =</span> <span class="fl">0.8</span>)<span class="sc">+</span> </span>
+<span id="cb15-7"><a href="#cb15-7"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1000</span>, <span class="dv">200</span>))<span class="sc">+</span> </span>
+<span id="cb15-8"><a href="#cb15-8"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Amplitude (\u00B5V)"</span>, <span class="at">x =</span> <span class="st">"Time (ms)"</span>) <span class="co"># UTC code \u00B5 creates the mu symbol for micro Volts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/erp plot positive-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>So far so good and it is pretty clear where there are waves moving in a negative or positive direction. If we wanted to flip the y-axis to make it look closer to old school EEG plots, then we only need one additional layer:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">ggplot</span>(impulsivity_long, <span class="fu">aes</span>(<span class="at">x=</span>Time_point, <span class="at">y=</span>mean_mV, <span class="at">colour=</span>Condition, <span class="at">group=</span>Condition))<span class="sc">+</span> </span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"D"</span>, <span class="at">begin =</span> <span class="fl">0.5</span>, <span class="at">end =</span> <span class="fl">0.8</span>)<span class="sc">+</span> </span>
+<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1000</span>, <span class="dv">200</span>))<span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Amplitude (\u00B5V)"</span>, <span class="at">x =</span> <span class="st">"Time (ms)"</span>) <span class="sc">+</span> <span class="co"># UTC code \u00B5 creates the mu symbol for micro Volts</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>  <span class="fu">scale_y_reverse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/erp plot negative-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Sometimes ggplot can be a little cryptic, but this additional layer is pretty self-explanatory. The geom is called <code>scale_y_reverse()</code> and does what it says on the tin.</p>
+</section><section id="adding-titles-and-subtitles" class="level2" data-number="8.6"><h2 data-number="8.6" class="anchored" data-anchor-id="adding-titles-and-subtitles">
+<span class="header-section-number">8.6</span> Adding titles and subtitles</h2>
+<p>As a final bonus section, you can add titles, subtitles, captions, and tags within ggplot. If you are inserting the plot into a report, its normally easier to add figure captions in the software you are using. However, if you create a standalone plot, you might want to add a title for context or add your name as the creator for the caption.</p>
+<p>We have used it in previous plots to change the x and y axis names, but there is a layer called <code>labs()</code> where you can define any label on the plot. Here are some additional options you can add if you ever need them:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">ggplot</span>(impulsivity_long, <span class="fu">aes</span>(<span class="at">x=</span>Time_point, <span class="at">y=</span>mean_mV, <span class="at">colour=</span>Condition, <span class="at">group=</span>Condition))<span class="sc">+</span> </span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option=</span><span class="st">"D"</span>, <span class="at">begin =</span> <span class="fl">0.5</span>, <span class="at">end =</span> <span class="fl">0.8</span>)<span class="sc">+</span> </span>
+<span id="cb17-6"><a href="#cb17-6"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1000</span>, <span class="dv">200</span>))<span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Amplitude (\u00B5V)"</span>, <span class="at">x =</span> <span class="st">"Time (ms)"</span>) <span class="sc">+</span> <span class="co"># UTC code \u00B5 creates the mu symbol for micro Volts</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Event-Related Potential differences for </span><span class="sc">\n</span><span class="st">failure and success conditions"</span>, <span class="co"># Big title at the top</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>       <span class="at">subtitle =</span> <span class="st">"N2 waves are stronger for failure, </span><span class="sc">\n</span><span class="st">but P3 waves are stronger for success"</span>, <span class="co"># Little subtitle at the top</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a>       <span class="at">caption =</span> <span class="st">"Made with love by James"</span>, <span class="co"># Smaller caption bottom right</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a>       <span class="at">tag =</span> <span class="st">"SGSSS </span><span class="sc">\n</span><span class="st">Summer School 2023"</span>) <span class="co"># Large tag top left</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="08-ch8-customisation_files/figure-html/titles-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section></main><!-- /main --><script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+// open rdrr links externally ----
+
+var exlinks = document.querySelectorAll("a[href^='https://rdrr.io']");
+var exlink_func = function(){
+  window.open(this.href);
+  return false;
+};
+for (var i = 0; i < exlinks.length; i++) {
+    exlinks[i].addEventListener('click', exlink_func, false);
+}
+
+// visible second sidebar in mobile ----
+
+function move_sidebar() {
+  var toc = document.getElementById("TOC");
+  var small_sidebar = document.querySelector("#quarto-sidebar .sidebar-menu-container");
+  var right_sidebar = document.getElementById("quarto-margin-sidebar");
+
+  if (window.innerWidth < 768) {
+    small_sidebar.append(toc);
+  } else {
+    right_sidebar.append(toc);
+  }
+}
+move_sidebar();
+window.onresize = move_sidebar;
+</script><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./07-ch7-group-project.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Group task</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./09-ch9-additional-resources.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Additional resources</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">CC-BY (2024) James Bartlett and Wilhelmiina Toivo</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+</body></html>
